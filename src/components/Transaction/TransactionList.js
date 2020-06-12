@@ -5,7 +5,7 @@ import { TransactionContext } from '../../context/TransactionContext';
 
 export default function TransactionList({ deleteTransaction}) {
 
-  const transaction = useContext(TransactionContext)
+  const {transaction} = useContext(TransactionContext)
 
   return (
     <List>

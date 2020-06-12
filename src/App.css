@@ -3,10 +3,18 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fade_in {
+  animation: fadeIn .7s ;
 }
 
 .transaction_item svg {
-
+  cursor: pointer;
   width: 0;
   transform: translateX(-5px);
   opacity: 0;
@@ -16,9 +24,19 @@ body {
 
 .transaction_item:hover .delete_icon {
 
-
   width: 16px;
   transform: translateX(0);
   opacity: 1;
+  margin-left: 6px;
 
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

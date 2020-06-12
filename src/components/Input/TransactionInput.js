@@ -1,11 +1,14 @@
-import { Button, Input, FormControl,   } from "@chakra-ui/core";
-import React, { useState } from "react";
+import { Button, Input, FormControl } from "@chakra-ui/core";
+import React, { useState, useContext } from "react";
+import { TransactionContext } from "../../context/TransactionContext";
 
-export default function TransactionInput({ addTransaction }) {
+export default function TransactionInput() {
   const [item, setItem] = useState({
     description: "",
     value: "",
   });
+
+  const { addTransaction } = useContext(TransactionContext);
 
   const handleInput = (e) => {
     setItem({
@@ -16,27 +19,22 @@ export default function TransactionInput({ addTransaction }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(item.description !== '' && item.value !== '' && item.value !== 0 ) {
-      addTransaction(item)
+    if (item.description !== "" && item.value !== "" && item.value !== 0) {
+      addTransaction(item);
       setItem({
-        description:'',
-        value:'',
-      })
-    } else {
-      console.log('input field empty')
+        description: "",
+        value: "",
+      });
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form style={{marginBottom: '1rem'}} onSubmit={handleSubmit}>
       <FormControl
-        display="flex"
-        justifyContent="space-between"
-        marginBottom="10px"
+        marginBottom="5px"
       >
         <Input
-          fontSize="sm"
-          flexBasis="72%"
+          fontSize="xs"
           onChange={handleInput}
           name="description"
           value={item.description}
@@ -45,17 +43,20 @@ export default function TransactionInput({ addTransaction }) {
           placeholder="Description"
           isRequired
         />
-        <Input
-          fontSize="sm"
-          flexBasis="25%"
+        
+      </FormControl>
+      <FormControl marginBottom="5px">
+      <Input
+          fontSize="xs"
           type="number"
           color="black"
           value={item.value}
           onChange={handleInput}
           name="value"
-          placeholder="Value"
+          placeholder="Amount"
           isRequired
         />
+
       </FormControl>
       <Button type="submit" variantColor="blue" minW="100%">
         Submit

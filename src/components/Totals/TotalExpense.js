@@ -1,19 +1,12 @@
-import React, { useContext } from "react";
-import { Text } from "@chakra-ui/core";
-import { TransactionContext } from "../../context/TransactionContext";
+import React from "react";
+import { Text, Tag } from "@chakra-ui/core";
 
-export default function TotalExpense() {
-  const transaction = useContext(TransactionContext);
+import NumberFormat from "react-number-format";
 
-  const totalExpense =
-    transaction.map((t) => t.value).filter((v) => v < 0).length > 0
-      ? Math.abs(
-          transaction
-            .map((t) => t.value)
-            .filter((v) => v < 0)
-            .reduce((acc, curr) => acc + curr)
-        )
-      : 0;
+export default function TotalExpense({totalExpense, totalExpensePercent}) {
+  
+
+  console.log('rendering')
 
   return (
     <div>
@@ -22,7 +15,10 @@ export default function TotalExpense() {
       </Text>
       <hr style={{ borderColor: "#4A5568" }} />
       <Text textAlign="right" fontSize="md" color="orange.500">
-        - {totalExpense}
+      <NumberFormat value={totalExpense} displayType={'text'} thousandSeparator={true} prefix={'- $'} />
+      <Tag marginLeft='5px' size="sm" variantColor="orange" variant='outline'>
+              {totalExpensePercent > 0 ? totalExpensePercent : '--'}%{" "}
+            </Tag>
       </Text>
     </div>
   );

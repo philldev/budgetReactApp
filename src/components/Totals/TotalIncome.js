@@ -1,12 +1,8 @@
-import React, {useContext} from "react";
+import React from "react";
 import { Text } from "@chakra-ui/core";
-import { TransactionContext } from "../../context/TransactionContext";
+import NumberFormat from "react-number-format";
 
-export default function TotalIncome() {
-  
-  const transaction = useContext(TransactionContext)
-
-  const totalIncome = transaction.length > 0 ? transaction.map(t => t.value).filter(v => v > 0).reduce((acc, curr) => acc + curr) : 0
+export default function TotalIncome({totalIncome}) {
 
   return (
     <div>
@@ -14,8 +10,8 @@ export default function TotalIncome() {
         Total income
       </Text>
       <hr style={{ borderColor: "#4A5568" }} />
-      <Text textAlign="right" fontSize="md" color="teal.300">
-        + {totalIncome}
+      <Text  textAlign="right" fontSize="md" color="teal.300">
+      <NumberFormat value={totalIncome} displayType={'text'} thousandSeparator={true} prefix={'+ $'} />
       </Text>
     </div>
   );
