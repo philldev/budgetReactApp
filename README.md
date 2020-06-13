@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Budget App
+A webapp that can calculate your monthly budget
+
+
 
 ## Available Scripts
 
