@@ -26,11 +26,11 @@ export const calcTotalExpense = (transaction) => {
 export const calcTotalIncome = (transaction) => {
 
   const totalIncome =
-    transaction.map((t) => t.value).filter((v) => v < 0).length > 0
+    transaction.map((t) => t.value).filter((v) => v > 0).length > 0
       ? Math.abs(
           transaction
             .map((t) => t.value)
-            .filter((v) => v < 0)
+            .filter((v) => v > 0)
             .reduce((acc, curr) => acc + curr)
         )
       : 0;

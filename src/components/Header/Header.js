@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { Heading } from "@chakra-ui/core";
 import { TransactionContext } from "../../context/TransactionContext";
-import NumberFormat from "react-number-format";
 import { calcBudget } from "../../utils/calculateTotal";
+import Date from "./Date";
+import Budget from "./Budget";
 
 export default function Header() {
   const {transaction} = useContext(TransactionContext);
@@ -12,17 +12,8 @@ export default function Header() {
   return (
     <>
 
-      <Heading as="h2" size='md'>
-        Your available budget in June 2020
-      </Heading>
-      <Heading  color={budget > 0 ? "teal.500" : "orange.500"} as="h2" size="lg">
-        <NumberFormat
-          value={budget}
-          displayType={"text"}
-          thousandSeparator={true}
-          prefix={budget > 0 ? "+ $" : " $"}
-        />
-      </Heading>
+      <Date/>
+      <Budget budget={budget}/>
     </>
   );
 }

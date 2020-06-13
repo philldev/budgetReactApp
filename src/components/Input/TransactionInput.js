@@ -1,4 +1,10 @@
-import { Button, Input, FormControl } from "@chakra-ui/core";
+import {
+  Button,
+  Input,
+  FormControl,
+  FormLabel,
+  FormHelperText,
+} from "@chakra-ui/core";
 import React, { useState, useContext } from "react";
 import { TransactionContext } from "../../context/TransactionContext";
 
@@ -29,10 +35,9 @@ export default function TransactionInput() {
   };
 
   return (
-    <form style={{marginBottom: '1rem'}} onSubmit={handleSubmit}>
-      <FormControl
-        marginBottom="5px"
-      >
+    <form style={{ marginBottom: "1rem" }} onSubmit={handleSubmit}>
+      <FormControl marginBottom="5px">
+        <FormLabel htmlFor="description">Description</FormLabel>
         <Input
           fontSize="xs"
           onChange={handleInput}
@@ -40,23 +45,25 @@ export default function TransactionInput() {
           value={item.description}
           type="text"
           color="black"
-          placeholder="Description"
+          placeholder="Transaction note"
           isRequired
         />
-        
       </FormControl>
-      <FormControl marginBottom="5px">
-      <Input
+      <FormControl marginBottom="20px">
+        <FormLabel htmlFor="value">Amount</FormLabel>
+        <Input
           fontSize="xs"
           type="number"
           color="black"
           value={item.value}
           onChange={handleInput}
           name="value"
-          placeholder="Amount"
+          placeholder="$--"
           isRequired
         />
-
+        <FormHelperText fontSize='xs' id="email-helper-text">
+          If it's an expense give a '-' in front of the amount 
+        </FormHelperText>
       </FormControl>
       <Button type="submit" variantColor="blue" minW="100%">
         Submit

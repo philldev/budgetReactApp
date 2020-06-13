@@ -3,10 +3,22 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+}
+
+/* main  */
+
+main {
+  color: #fff;
+  margin: 100px auto;
+  min-width: 240px;
+  max-width: 350px;
+  background-color: rgb(3, 28, 71);
+  padding: 20px 30px;
+  box-shadow: 10px 10px rgb(2, 16, 41);
+}
+
+main h2 {
+  text-align: center;
 }
 
 .fade_in {

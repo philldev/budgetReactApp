@@ -17,7 +17,7 @@ export default function Totals() {
 
 
   return (
-    <div style={{marginBottom : '1rem'}}>
+    <div className="totals" style={{marginBottom : '1rem'}}>
       <TotalIncome totalIncome={totalIncome} />
       <TotalExpense totalExpense={totalExpense} totalExpensePercent={totalExpensePercent} />
     </div>
