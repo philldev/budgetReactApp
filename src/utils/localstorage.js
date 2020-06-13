@@ -4,7 +4,7 @@ const LOCAL_STORAGE_KEY = 'budgetapp'
 
 export const useLocalStorage = (state, setState) => {
   useEffect(() => {
-    if (!state) {
+    if (state.Transaction) {
       const storageState = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
       setState(storageState);
     }
