@@ -7,8 +7,13 @@ export const useData = () => {
     Transactions: [],
   });
 
-  const addTransaction = (item) => {
-    const { description, value } = item;
+  const addTransaction = (item, type) => {
+    let { description, value } = item;
+    
+    value = type === '-' ? `-${value}` : value
+
+    console.log(type)
+
     const id = uuidv4();
     const newItem = {
       id,

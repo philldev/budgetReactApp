@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import NumberFormat from "react-number-format";
-import { ListItem, Text, Icon, Tag } from "@chakra-ui/core";
+import { ListItem, Text, Icon } from "@chakra-ui/core";
 import { TransactionContext } from "../../context/TransactionContext";
 import { itemPercentage } from "../../utils/itemPercentage";
 
@@ -13,7 +13,7 @@ export default function TransactionItem({ item }) {
 
   const isExpense = item.value < 0 ? true : false;
 
-  const percent = itemPercentage(isExpense,transaction, item)
+  const percent = itemPercentage(isExpense, transaction, item);
 
   return (
     <>
@@ -23,7 +23,7 @@ export default function TransactionItem({ item }) {
         marginBottom="5px"
         display="flex"
         justifyContent="space-between"
-        paddingBottom='5px'
+        paddingBottom="5px"
       >
         <Text>{item.description}</Text>
         <Text color={item.value > 0 ? "teal.500" : "orange.500"}>
@@ -34,11 +34,18 @@ export default function TransactionItem({ item }) {
             prefix={item.value > 0 ? "+ $" : " $"}
           />
           {isExpense ? (
-            <Tag marginLeft='5px' size="sm" variantColor="orange" variant='outline'>
+            <span
+              style={{
+                border: "1px solid #DD6B20",
+                borderRadius: "5px",
+                padding: "5px",
+                marginLeft: "5px",
+              }}
+            >
               {percent}%{" "}
-            </Tag>
+            </span>
           ) : (
-            ''
+            ""
           )}
           <span onClick={handleDelete}>
             <Icon
